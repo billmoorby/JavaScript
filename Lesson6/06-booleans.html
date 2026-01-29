@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Booleans</title>
+  </head>
+
+  <body>
+    <script>
+      // true
+      // false
+
+      // console.log(3 > 5);
+
+      // console.log(typeof true);
+
+      // Truthy Values --> #s greater than 0
+      if (5) {
+        console.log('truthy');
+      }
+
+      // Falsy Values --> 0, false, Nan, undefined, null
+      if (0) {
+        console.log('truthy');
+      }
+
+      const cartQuantity = 5;
+
+      if (cartQuantity) {
+        console.log('cart has products');
+      }
+
+      // Will flip falsy value of 0 to true
+      console.log(!0);
+
+      //Nan
+      console.log('text' / 5);
+
+      // Undefined
+      let variable1;
+      console.log(variable1);
+
+      // You can only use "let" for undefined, else you have to type out "undefined" like in the bottom example
+      // const variable1 = undefined;
+
+
+      // console.log(5 == '5.00');
+      // True, because the string is CONVERTED to an int
+
+
+      // console.log(5 === '5.00');
+      // TRIPLE equals removes the conversion
+
+      // console.log(5 != '5.00');
+
+
+      // if (15 >= 16) {
+      //   console.log('You can drive');
+      //   console.log('Congrats!');
+      // } else if (15 >= 14) {
+      //     console.log('Almost there!');
+      // } else {
+      //   console.log('You can not drive.');
+      // }
+
+      // const age = 15;
+
+      // if (age >= 16) {
+      //   console.log('You can drive');
+      //   console.log('Congrats!');
+      // } else if (age >= 14) {
+      //     console.log('Almost there!');
+      // } else {
+      //   console.log('You can not drive.');
+      // }
+
+
+      // console.log(true && false);
+      // console.log(0.2 >= 0 && 0.2 < 1/3);
+
+      // console.log(true || false);
+
+      // console.log(!true);
+      // console.log(!false);
+
+      // Ternary Operators
+      // Similar to if-else, 1st value is the condition, ? is the if branch, : is the else branch
+      // Can be saved in variable
+      const result = true ? 'truthy': 'falsy'
+      console.log(result);
+
+      const result2 = 0 ? 'truthy': 'falsy'
+      console.log(result2);
+
+
+      // Short Circuits and does not run the code
+      //Guard Operator(&&) short circuits at first falsy value
+      false && console.log('hello');
+
+      const message = false && 'hello';
+      console.log(message);
+
+      const message2 = 5 && 'hello';
+      console.log(message2);
+
+
+      //Default Operator(||) checks if at least 1 side is truthy
+      const currency = 'EUR' || 'USD';
+      console.log(currency);
+
+      const currency2 = undefined || 'USD';
+      console.log(currency2);
+    </script>
+  </body>
+</html>
