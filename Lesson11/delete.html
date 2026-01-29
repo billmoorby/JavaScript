@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Delete</title>
+    <link rel="stylesheet" href="styles/delete.css">
+  </head>
+
+  <body>
+    <script>
+      let foods = ['egg', 'apple', 'egg', 'egg', 'ham'];
+
+      function removeEgg(foods) {
+        let result = [];
+        let eggCount = 0;
+        let foodCopy = foods.slice();
+        let reversedFoods = foodCopy.reverse();
+
+        for (let i = 0; i < reversedFoods.length; i++) {
+          food = reversedFoods[i];
+          if (food === 'egg' && eggCount < 2) {
+            eggCount += 1;
+            continue;
+          } else {
+            result.push(food);
+          }
+        };
+        return result.reverse();
+      };
+
+      console.log(removeEgg(foods));
+
+      console.log(foods);
+    </script>
+  </body>
+</html>
