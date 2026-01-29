@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      12c
+    </title>
+  </head>
+
+  <body>
+    <button onclick="
+      updateButton();
+      " class="js-button">Start</button>
+
+    <script>
+      function updateButton() {
+        setTimeout(function() {
+          const buttonElement = document.querySelector('.js-button');
+          buttonElement.innerHTML = 'Finished!';
+        }, 1000);
+      };
+    </script>
+  </body>
+</html>

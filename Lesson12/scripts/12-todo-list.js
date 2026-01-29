@@ -1,0 +1,81 @@
+let todoList = JSON.parse(localStorage.getItem('todoList')) || 
+  [
+    {
+      task: 'make dinner', 
+      dueDate: '2026-01-14'
+    }, 
+
+    {
+      task: 'wash dishes', 
+      dueDate: '2026-01-14'
+    }
+  ];
+
+renderTodoList();
+
+function renderTodoList() {
+  let todoListHTML = '';
+  
+  todoList.forEach((todoObject, index) => {
+    const { task, dueDate } = todoObject;
+
+    let html = `
+      <div>${task}</div>
+
+      <div>${dueDate}</div>
+
+      <button class="delete-todo-button js-delete-todo-button">Delete</button>
+    `;
+
+    todoListHTML += html;
+  });
+
+
+  document.querySelector('.js-todo-list')
+    .innerHTML = todoListHTML;
+  
+  document.querySelectorAll('.js-delete-todo-button')
+    .forEach((deleteButton, index) => {
+      deleteButton.addEventListener('click', () => {
+        todoList.splice(index, 1);
+
+        renderTodoList();
+
+        saveToStorage();
+      });
+    });
+};
+
+
+// Event Listeners
+document.querySelector('.js-add-todo-button')
+  .addEventListener('click', () => {
+    addTodo();
+  });
+
+
+function addTodo() {
+  const taskElement = document.querySelector('.js-name-input');
+  const task = taskElement.value;
+
+  const dateInputElement = document.querySelector('.js-due-date-input');
+  const dueDate = dateInputElement.value;
+
+  todoList.push(
+    {
+      task, 
+      dueDate
+    }
+  );
+
+  taskElement.value = '';
+  dateInputElement.value = '';
+
+  renderTodoList();
+
+  saveToStorage();
+};
+
+function saveToStorage() {
+  localStorage.setItem('todoList', JSON.stringify(todoList));
+};
