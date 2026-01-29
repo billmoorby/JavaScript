@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Delete</title>
+
+    <style>
+      .toggle-button {
+        background-color: rgb(230, 230, 230);
+        color: black;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        font-size: 15px;
+        cursor: pointer;
+      }
+
+      .is-toggled {
+        background-color: black;
+        color: white;
+      }
+    </style>
+  </head>
+
+  <body>
+    <button onclick="
+      toggle_button();
+      " class="js-gaming-button toggle-button">
+      Gaming
+    </button>
+
+    <script>
+      function toggle_button() {
+        const buttonElement = document.querySelector('.js-gaming-button');
+        if (buttonElement.classList.contains('is-toggled')) {
+          buttonElement.classList.remove('is-toggled');
+        } else {
+          buttonElement.classList.add('is-toggled');
+        }
+      };
+    </script>
+  </body>
+</html>
