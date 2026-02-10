@@ -81,7 +81,7 @@ products.forEach((product) => {
       </div>
 
       <div class="product-quantity-container">
-        <select>
+        <select class="js-quantity-selector-${product.id}">
           <option selected value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -117,22 +117,30 @@ document.querySelector('.js-products-grid')
 document.querySelectorAll('.js-add-to-cart')
   .forEach((button) => {
     button.addEventListener('click', () => {
+      // The kebab case gets CONVERTED to CAMEL CASE
       const productId = button.dataset.productId;
 
       let matchingItem;
 
+      // Check for duplicate items so we can increase quantity
       cart.forEach((item) => {
         if (productId === item.productId) {
           matchingItem = item;
         }
       });
 
+      // 13c
+      const quantitySelector = document.querySelector(`.js-quantity-selector-${productId}`);
+      // 13d
+      const quantity = Number(quantitySelector.value);
+
       if (matchingItem) {
-        matchingItem.quantity += 1;
+        // matchingItem.quantity += 1;
+        matchingItem.quantity += quantity;
       } else {
         cart.push({
         productId: productId, 
-        quantity: 1
+        quantity: quantity
         });
       };
 
