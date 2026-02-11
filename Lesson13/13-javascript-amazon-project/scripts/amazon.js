@@ -142,8 +142,8 @@ document.querySelectorAll('.js-add-to-cart')
         matchingItem.quantity += quantity;
       } else {
         cart.push({
-        productId: productId, 
-        quantity: quantity
+        productId, 
+        quantity
         });
       };
 
