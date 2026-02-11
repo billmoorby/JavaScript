@@ -656,5 +656,101 @@ const products = [
       "apparel",
       "mens"
     ]
+  },
+
+  // 13g
+  {
+    id: "id1",
+    image: "images/products/backpack.jpg", 
+    name: "Black Backpack", 
+    rating: {
+      stars: 3, 
+      count: 2017
+    }, 
+    priceCents: 1999, 
+    keywords: [
+      'backpack', 
+      'school'
+    ] 
+  }, 
+
+  {
+    id: "id2", 
+    image: "images/products/umbrella.jpg", 
+    name: "Large Dark Green Umbrella", 
+    rating: {
+      stars: 4.5, 
+      count: 3456
+    }, 
+    priceCents: 999, 
+    keywords: [
+      'umbrella',
+      'rain'
+    ]
+  }, 
+
+  {
+    id: "id3", 
+    image: "images/products/bitcoin_miner.jpg", 
+    name: "New Canaan Avalon Q 90T (Cover Custom Tax) BTC Bitcoin Miner 110V 220V 1647W Quiet Home Crypto Asic Miner Include PSU Ship in Stock", 
+    rating: {
+      stars: 5, 
+      count: 5
+    }, 
+    priceCents: 91500, 
+    keywords: [
+      "bitcoin", 
+      "miner", 
+      "Canaan Avalon Q 90T"
+    ]
+  }, 
+
+  {
+    id: "id4", 
+    image: "images/products/synology_2.jpg", 
+    name: "Synology 2-Bay DiskStation DS224+ (Diskless)", 
+    rating: {
+      stars: 4.5, 
+      count: 8417
+    }, 
+    priceCents: 34449, 
+    keywords: [
+      "synology", 
+      "DS224"
+    ]
+  }, 
+
+  {
+    id: "id5", 
+    image: "images/products/msi_mag_monitor.jpg", 
+    name: "MSI MAG 321UP QD-OLED 32-inch QD-OLED 3840 x 2160 (UHD) Computer Monitor, 165Hz, Adaptive-Synch, HDMI, Display Port, VGA Port, VESA Mountable, Tilt, Height Adjustable, Speaker, 0.03ms, Black", 
+    rating: {
+      stars: 4.5, 
+      count: 116
+    }, 
+    priceCents: 78929, 
+    keywords: [
+      "monitor", 
+      "computer", 
+      "msi mag", 
+      "QD-OLED"
+    ]
+  }, 
+
+  {
+    id: "id6", 
+    image: "images/products/astrobot.jpg", 
+    name: "Astro Bot PS5", 
+    rating: {
+      stars: 5, 
+      count: 1309
+    }, 
+    priceCents: 5999, 
+    keywords: [
+      "astro bot", 
+      "ps5", 
+      "videogames", 
+      "video games"
+    ]
   }
 ];
