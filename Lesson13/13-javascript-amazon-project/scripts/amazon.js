@@ -52,6 +52,8 @@
 
 // }];
 
+// Modules (Only work with Live Server)
+import {cart} from '../data/cart.js';
 
 let productsHTML = '';
 
@@ -142,8 +144,8 @@ document.querySelectorAll('.js-add-to-cart')
         matchingItem.quantity += quantity;
       } else {
         cart.push({
-        productId, 
-        quantity
+          productId, 
+          quantity
         });
       };
 
