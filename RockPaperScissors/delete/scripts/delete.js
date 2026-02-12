@@ -7,7 +7,6 @@ let score = JSON.parse(localStorage.getItem('score')) || {
 
 updateScoreElement();
 
-
 function playGame(playerMove) {
   const computerMove = pickComputerMove();
   let result = '';
@@ -25,7 +24,7 @@ function playGame(playerMove) {
     if (computerMove === 'rock') {
       result = 'You win.';
     } else if (computerMove === 'paper') {
-      result = 'Tie.';
+      result = 'Tie';
     } else if (computerMove === 'scissors') {
       result = 'You lose.';
     }
@@ -38,7 +37,7 @@ function playGame(playerMove) {
     } else if (computerMove === 'scissors') {
       result = 'Tie.';
     }
-  };
+  }
 
   if (result === 'You win.') {
     score.wins += 1;
@@ -46,8 +45,7 @@ function playGame(playerMove) {
     score.losses += 1;
   } else if (result === 'Tie.') {
     score.ties += 1;
-  };
-
+  }
 
   localStorage.setItem('score', JSON.stringify(score));
 
@@ -58,10 +56,10 @@ function playGame(playerMove) {
   
   document.querySelector('.js-moves')
     .innerHTML = `
-      You 
-      <img src="images/${playerMove}-emoji.png" class="move-icon">
-      <img src="images/${computerMove}-emoji.png" class="move-icon>
-      Computer
+    You 
+    <img src="images/${playerMove}-emoji.png" class="move-icon">
+    <img src="images/${computerMove}-emoji.png" class="move-icon">
+    Computer
     `;
 };
 
@@ -71,12 +69,12 @@ function pickComputerMove() {
   let computerMove = '';
 
   if (randomNumber >= 0 && randomNumber < 1/3) {
-    computerMove = 'rock';
-  } else if (randomNumber >= 1/3 &&  randomNumber < 2/3) {
+    computerMove = 'rock'; 
+  } else if (randomNumber >= 1/3 && randomNumber < 2/3) {
     computerMove = 'paper';
   } else if (randomNumber >= 2/3 && randomNumber < 1) {
     computerMove = 'scissors';
-  };
+  }
 
   return computerMove;
 };
@@ -93,7 +91,7 @@ let intervalId;
 function autoPlay() {
   if (!isAutoPlaying) {
     intervalId = setInterval(() => {
-      const playerMove = pickComputerMove();
+      playerMove = pickComputerMove();
       playGame(playerMove);
     }, 1000);
 
@@ -108,7 +106,7 @@ function autoPlay() {
 
     document.querySelector('.js-auto-play-button')
       .innerHTML = `Auto Play`;
-  };
+  }
 };
 
 
@@ -122,18 +120,18 @@ function resetScore() {
   updateScoreElement();
 };
 
+
 function showResetConfirmation() {
   document.querySelector('.js-reset-confirmation')
     .innerHTML = `
-      Are you aure you want to reset the score?
+      Are you sure you want to reset the score?
 
       <button class="js-reset-confirm-yes reset-confirm-button">Yes</button>
       <button class="js-reset-confirm-no reset-confirm-button">No</button>
     `;
-
+  
   document.querySelector('.js-reset-confirm-yes')
     .addEventListener('click', () => {
-
       resetScore();
 
       hideResetConfirmation();
@@ -141,7 +139,6 @@ function showResetConfirmation() {
   
   document.querySelector('.js-reset-confirm-no')
     .addEventListener('click', () => {
-
       hideResetConfirmation();
     });
 };
@@ -150,7 +147,6 @@ function hideResetConfirmation() {
   document.querySelector('.js-reset-confirmation')
     .innerHTML = ``;
 };
-
 
 
 // Event Listeners
@@ -173,6 +169,7 @@ document.querySelector('.js-auto-play-button')
   .addEventListener('click', () => {
     autoPlay();
 });
+
 
 document.querySelector('.js-reset-score-button')
   .addEventListener('click', () => {
