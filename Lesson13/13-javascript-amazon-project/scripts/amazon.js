@@ -53,7 +53,7 @@
 // }];
 
 // Modules (Only work with Live Server)
-import {cart} from '../data/cart.js';
+import {cart, addToCart} from '../data/cart.js';
 import {products} from '../data/products.js';
 
 let productsHTML = '';
@@ -117,6 +117,28 @@ products.forEach((product) => {
 document.querySelector('.js-products-grid')
   .innerHTML = productsHTML;
 
+
+function updateCartQuantity(productId) {
+  // Calculate total cart quantity
+  let cartQuantity = 0;
+
+  cart.forEach((cartItem) => {
+    cartQuantity += cartItem.quantity;
+  });
+
+  document.querySelector('.js-cart-quantity')
+    .innerHTML = cartQuantity;
+  
+  // 13j - 13l
+  const addedMessage = document.querySelector(`.js-added-to-cart-${productId}`);
+
+  addedMessage.classList.add('added-to-cart-visible');
+
+  setTimeout(() => {
+    addedMessage.classList.remove('added-to-cart-visible');
+  }, 2000);
+};
+
 document.querySelectorAll('.js-add-to-cart')
   .forEach((button) => {
     button.addEventListener('click', () => {
@@ -126,47 +148,10 @@ document.querySelectorAll('.js-add-to-cart')
       // ^ using the destructuring method
       const {productId} = button.dataset;
 
-      let matchingItem;
+      // Run addToCart method
+      addToCart(productId);
 
-      // Check for duplicate items so we can increase quantity
-      cart.forEach((item) => {
-        if (productId === item.productId) {
-          matchingItem = item;
-        }
-      });
-
-      // 13c
-      const quantitySelector = document.querySelector(`.js-quantity-selector-${productId}`);
-      // 13d
-      const quantity = Number(quantitySelector.value);
-
-      if (matchingItem) {
-        // matchingItem.quantity += 1;
-        matchingItem.quantity += quantity;
-      } else {
-        cart.push({
-          productId, 
-          quantity
-        });
-      };
-
-      // Calculate total cart quantity
-      let cartQuantity = 0;
-
-      cart.forEach((item) => {
-        cartQuantity += item.quantity;
-      });
-
-      document.querySelector('.js-cart-quantity')
-        .innerHTML = cartQuantity;
-      
-      // 13j - 13l
-      const addedMessage = document.querySelector(`.js-added-to-cart-${productId}`);
-
-      addedMessage.classList.add('added-to-cart-visible');
-
-      setTimeout(() => {
-        addedMessage.classList.remove('added-to-cart-visible');
-      }, 2000);
+      //Run updateCartQuantity method
+      updateCartQuantity(productId);
     });
 });
