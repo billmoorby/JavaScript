@@ -140,6 +140,9 @@ function updateCartQuantity(productId) {
   }, 2000);
 };
 
+// Using 14d function
+updatePageCartQuantity();
+
 document.querySelectorAll('.js-add-to-cart')
   .forEach((button) => {
     button.addEventListener('click', () => {
@@ -156,3 +159,15 @@ document.querySelectorAll('.js-add-to-cart')
       updateCartQuantity(productId);
     });
 });
+
+// 14d. Update the Amazon Page Cart Quantity when it loads. New function that does take in productId parameter.
+function updatePageCartQuantity() {
+  let cartQuantity = 0;
+
+  cart.forEach((cartItem) => {
+    cartQuantity += cartItem.quantity;
+  });
+
+  document.querySelector('.js-page-cart-quantity')
+    .innerHTML = cartQuantity;
+};
