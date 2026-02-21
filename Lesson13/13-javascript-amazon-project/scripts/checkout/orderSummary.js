@@ -133,10 +133,13 @@ export function renderOrderSummary() {
         removeFromCart(productId);
 
         // Remove the HTML for the product
-        const container = document.querySelector(`.js-cart-item-container-${productId}`);
-        container.remove();
+        // const container = document.querySelector(`.js-cart-item-container-${productId}`);
+        // container.remove();
 
-        updateCartQuantity();
+        // updateCartQuantity();
+
+        // 15h. When deleting a product from the cart, instead of using the DOM and updating the page directly with .delete(), regenerate the HTML for the order summary.
+        renderOrderSummary();
 
         // Regenerate the Payment Summary HTML when clicking delete
         renderPaymentSummary();
