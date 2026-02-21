@@ -11,6 +11,7 @@ import {hello} from 'https://unpkg.com/supersimpledev@1.0.1/hello.esm.js';
 import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
 import {deliveryOptions, getDeliveryOption} from '../../data/deliveryOptions.js';
 import {renderPaymentSummary} from './paymentSummary.js';
+import {renderCheckoutHeader} from './checkoutHeader.js';
 
 
 export function renderOrderSummary() {
@@ -137,6 +138,9 @@ export function renderOrderSummary() {
         // container.remove();
 
         // updateCartQuantity();
+
+        // 15k. Re-render Checkout Header so cart quantity is updated after deleting a product from the cart.
+        renderCheckoutHeader();
 
         // 15h. When deleting a product from the cart, instead of using the DOM and updating the page directly with .delete(), regenerate the HTML for the order summary.
         renderOrderSummary();
