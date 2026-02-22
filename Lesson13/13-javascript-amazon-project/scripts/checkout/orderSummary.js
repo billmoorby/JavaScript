@@ -183,7 +183,12 @@ export function renderOrderSummary() {
         const container = document.querySelector(`.js-cart-item-container-${productId}`);
         container.classList.remove('is-editing-quantity');
 
-        updateCartQuantity();
+        // 15n. Use MVC to update page when updating and saving the quantity in the checkout page.
+        renderCheckoutHeader();
+        renderOrderSummary();
+        renderPaymentSummary();
+
+        // updateCartQuantity();
       });
     });
 
