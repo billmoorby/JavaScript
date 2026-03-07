@@ -6,6 +6,11 @@ class Car {
     this.brand = carDetails.brand;
     this.model = carDetails.model;
   }
+
+  // displayInfo method
+  displayInfo() {
+    console.log(`${this.brand} ${this.model}`);
+  }
 }
 
 const car1 = new Car({
@@ -20,3 +25,6 @@ const car2 = new Car({
 
 console.log(car1);
 console.log(car2);
+
+car1.displayInfo();
+car2.displayInfo();
