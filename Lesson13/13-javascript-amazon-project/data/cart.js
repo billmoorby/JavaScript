@@ -107,6 +107,11 @@ export function updateDeliveryOption(productId, deliveryOptionId) {
     };
   });
 
+  // Case where we have an invalid productId in the cart(we cannot update its delivery option), do nothing.
+  if (!matchingItem) {
+    return;
+  };
+
   matchingItem.deliveryOptionId = deliveryOptionId;
 
   saveToStorage();
