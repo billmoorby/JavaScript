@@ -1,6 +1,4 @@
-// if (!cart) {
-
-// }
+import {validDeliveryOption} from './deliveryOptions.js';
 
 export let cart;
 
@@ -109,6 +107,11 @@ export function updateDeliveryOption(productId, deliveryOptionId) {
 
   // Case where we have an invalid productId in the cart(we cannot update its delivery option), do nothing.
   if (!matchingItem) {
+    return;
+  };
+
+  // Case where we have an invalid deliveryOptionId. Do nothing.
+  if (!validDeliveryOption(deliveryOptionId)) {
     return;
   };
 
