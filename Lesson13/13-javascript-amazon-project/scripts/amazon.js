@@ -148,8 +148,12 @@ document.querySelectorAll('.js-add-to-cart')
       // ^ using the destructuring method
       const {productId} = button.dataset;
 
+      // Update quantitySelector here to avoid null error in tests.
+      const quantitySelector = document.querySelector(`.js-quantity-selector-${productId}`);
+      const quantity = Number(quantitySelector.value);
+
       // Run addToCart method
-      addToCart(productId);
+      addToCart(productId, quantity);
 
       //Run updateCartQuantity method
       updateCartQuantity(productId);
