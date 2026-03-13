@@ -125,8 +125,8 @@ function Cart(localStorageKey) {
   return cart;
 };
 
-const cart = new Cart('cart-oop');
-const businessCart = new Cart('cart-business');
+const cart = Cart('cart-oop');
+const businessCart = Cart('cart-business');
 
 cart.loadFromStorage();
 
