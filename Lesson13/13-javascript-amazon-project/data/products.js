@@ -1,3 +1,5 @@
+import {formatCurrency} from '../scripts/utils/money.js';
+
 export function getProduct(productId) {
   let matchingProduct;
 
@@ -9,6 +11,33 @@ export function getProduct(productId) {
 
   return matchingProduct;
 };
+
+// Product class to generate products.
+class Product {
+  id;
+  image;
+  name;
+  rating;
+  priceCents;
+
+  constructor(productDetails) {
+    this.id = productDetails.id;
+    this.image = productDetails.image;
+    this.name = productDetails.name;
+    this.rating = productDetails.rating;
+    this.priceCents = productDetails.priceCents;
+  }
+
+  // Method where each product can construct its own stars url.
+  getStarsURL() {
+    return `images/ratings/rating-${this.rating.stars * 10}.png`;
+  }
+
+  getPrice() {
+    return `$${formatCurrency(this.priceCents)}`;
+  }
+}
+
 
 export const products = [
   {
@@ -765,4 +794,8 @@ export const products = [
       "video games"
     ]
   }
-];
+].map((productDetails) => {
+  // Convert each product object into a Product class.
+  // Map takes array, transforms it with function, and outputs new array. We have a new array of Product objects.
+  return new Product(productDetails);
+});
