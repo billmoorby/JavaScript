@@ -130,6 +130,7 @@ export function loadProductsFetch() {
   // fetch() makes HTTP request. Default is GET. Returns a promise directly.
   // fetch() uses promise to get response instead of a callback.
   const promise = fetch(
+    // 'https://error.supersimplebackend.dev/products'
     'https://supersimplebackend.dev/products'
   ).then((response) => {
     // response is a promise
@@ -143,11 +144,16 @@ export function loadProductsFetch() {
       };
       return new Product(productDetails);
     });
+    
     console.log('load products');
+    // Use catch for error handling.
+  }).catch((error) => {
+    console.log('Unexpected error. Please try again later.');
   });
 
   return promise;
 };
+
 /*
 loadProductsFetch().then(() => {
   console.log('next step');
@@ -174,6 +180,12 @@ export function loadProducts(fun) {
       // Callback = function to run in the future.
       fun();
   });
+
+  // Set up a separate callback for error handling.
+  xhr.addEventListener('error', (error) => {
+    console.log('Unexpected error. Please try again later.');
+  });
+  // xhr.open('GET', 'https://error.supersimplebackend.dev/products');
 
   xhr.open('GET', 'https://supersimplebackend.dev/products');
   xhr.send();
