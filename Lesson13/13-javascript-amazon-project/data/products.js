@@ -123,6 +123,35 @@ export class Appliance extends Product {
   }
 }
 
+// Load products using backend.
+export let products = [];
+
+export function loadProducts(fun) {
+  const xhr = new XMLHttpRequest();
+
+  xhr.addEventListener('load', () => {
+    // Convert JSON to JavaScript array and then convert form objects to classes.
+    products = JSON.parse(xhr.response).map((productDetails) => {
+      if (productDetails.type === 'clothing') {
+        return new Clothing(productDetails);
+      } else if(productDetails.type === "appliance") {
+        return new Appliance(productDetails);
+      };
+      // Convert each product object into a Product class.
+      return new Product(productDetails);
+    });
+      console.log('load products');
+
+      // Wait for HTTP request to finish and then run callback function to render products.
+      // Callback = function to run in the future.
+      fun();
+  });
+
+  xhr.open('GET', 'https://supersimplebackend.dev/products');
+  xhr.send();
+};
+
+/*
 export const products = [
   {
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
@@ -902,3 +931,4 @@ export const products = [
   // Map takes array, transforms it with function, and outputs new array. We have a new array of Product objects.
   return new Product(productDetails);
 });
+*/
