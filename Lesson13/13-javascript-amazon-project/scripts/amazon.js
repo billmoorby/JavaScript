@@ -63,8 +63,21 @@ loadProducts(renderProductsGrid);
 function renderProductsGrid() {
   let productsHTML = '';
 
+  const url = new URL(window.location.href);
+  const search = url.searchParams.get('search');
+
+  let filteredProducts = products;
+
+  // If a search exists in the URL parameters.
+  // Filter the products that match the search.
+  if (search) {
+    filteredProducts = products.filter((product) => {
+      return product.name.includes(search);
+    });
+  };
+
   // Generate the HTML by looping through the data structure
-  products.forEach((product) => {
+  filteredProducts.forEach((product) => {
     productsHTML += `
       <div class="product-container">
         <div class="product-image-container">
@@ -173,4 +186,10 @@ function renderProductsGrid() {
     document.querySelector('.js-page-cart-quantity')
       .innerHTML = cartQuantity;
   };
+
+  document.querySelector('.js-search-button')
+    .addEventListener('click', () => {
+      const search = document.querySelector('.js-search-bar').value;
+      window.location.href = `amazon.html?search=${search}`;
+    });
 };
